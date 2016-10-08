@@ -11,16 +11,6 @@
   = image_tag("start.png", options = {:id=>"start", :style => "width:70px"})
   = image_tag("stop.png", options = {:id=>"stop", :style => "width:70px;"})
 
-//logged in or not
-- if user_signed_in?
-  %p= link_to 'ログアウト', destroy_user_session_path, method: :delete
-  %p= link_to '今週のプラン', plans_path
-  %p= link_to 'プランを立てる', new_plan_path
-  %p= @user.name
-  %img{ src: @user.cover, width: '50px', height: '50px' }
-- else
-  = link_to 'facebookログイン', user_facebook_omniauth_authorize_path
-
 :javascript
   $('#start').on('click', function(){
     $('.timer').startTimer();

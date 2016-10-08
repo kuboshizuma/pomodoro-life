@@ -41,6 +41,9 @@ class PlansController < ApplicationController
     time_slots = TimeSlot.where(weekly_plan: @plan.id).includes(:todos)
     time_slots.each do |time_slot|
       @start_times.append(time_slot.start_time)
+      if time_slot.todos[0].nil?
+        redirect_to new_plan_path and return
+      end
       @slot_todos[time_slot.start_time] = time_slot.todos[0]
     end
   end

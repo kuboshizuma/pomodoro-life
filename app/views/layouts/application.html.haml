@@ -10,7 +10,42 @@
     - if (head = yield(:head)).present?
       = head
   %body
+    %nav#my-menu
+      %ul.wrap_ul
+        - if user_signed_in?
+          %li
+            %p.header_prof
+              %img{ src: current_user.cover, width: '40px', height: '40px' }
+              %span= current_user.name
+          %li
+            = link_to root_path do
+              %i.fa.fa-home
+              %span HOME
+          %li
+            = link_to new_plan_path do
+              %i.fa.fa-calendar-plus-o
+              %span プランを立てる
+          %li
+            = link_to plans_path do
+              %i.fa.fa-calendar
+              %span 今週のプラン
+          %li
+            = link_to destroy_user_session_path, method: :delete do
+              %i.fa.fa-sign-out
+              %span ログアウト
+        - else
+          %li
+            = link_to user_facebook_omniauth_authorize_path do
+              %i.fa.fa-facebook-square
+              %span 無料Facebookログイン
     .wrapper
-      %p.notice= notice
-      %p.alert= alert
-      = yield
+      #nomal_view
+        %header#header.container
+          .content.dropdown
+            %h1
+              = link_to root_path do
+                = image_tag 'http://placehold.it/113x27', width: '113px', height: '27px', alt: "pomodoro-life"
+            = link_to "#my-menu", id: "my-menu-button", class: 'menu_button' do
+              %i.fa.fa-bars
+        #page_wrap
+          = yield

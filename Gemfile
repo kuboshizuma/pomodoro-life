@@ -21,6 +21,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'httparty'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri
