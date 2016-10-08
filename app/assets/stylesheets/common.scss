@@ -43,3 +43,59 @@
 .buttondisplay{
   padding: 30px 40% 0 40%;
 }
+
+
+//plans#new
+p.times{
+  width: 12%;
+  margin: 12px 0 12px 10px;
+  font-size: 10px;
+}
+.slotlist{
+  padding: 0;
+}
+.slottable{
+  padding-right: 0;
+  padding-left: 20px;
+  margin-left: 10px;
+}
+
+p.slot{
+  margin: 0;
+  border: solid #F7F7F7;
+  border-width: 0.5px;
+  height:26px;
+}
+
+p.days{
+  float: left;
+  width: 13.5%;
+  margin: 0;
+  background-color: white;
+  border: solid #F7F7F7;
+  border-width: 1px;
+  padding: 3px;
+}
+
+input{
+  opacity: 0;
+}
+
+input.btn.btn-primary{
+  opacity: 1;
+  border-radius: 200px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #D55C4B;
+  border: none;
+}
+
+p.originalBackground{
+  background-color: white;
+}
+
+p.selectedBackground{
+  background-color: #1abc9c;
+}
+
