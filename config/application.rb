@@ -14,6 +14,8 @@ module PomodoroLife
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.i18n.default_locale = :ja
+    config.time_zone = 'Tokyo'
+    config.active_record.default_timezone = :local
     config.generators do |g|
       g.assets false
       g.helper false
