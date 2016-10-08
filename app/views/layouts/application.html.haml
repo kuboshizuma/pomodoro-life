@@ -9,6 +9,8 @@
     = javascript_include_tag 'application'
     - if (head = yield(:head)).present?
       = head
+    - if (head = yield(:plan)).present?
+      = head
   %body
     %nav#my-menu
       %ul.wrap_ul
