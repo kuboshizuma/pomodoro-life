@@ -1,22 +1,17 @@
 class PlansController < ApplicationController
+  include Common
 
   def new(week='next')
-    if week == 'next'
-      @next_monday = Date.today.beginning_of_week + 1.week
-    else week == 'this'
-      @next_monday = Date.today.beginning_of_week
-    end
-    dayname = Date::ABBR_DAYNAMES.dup
-    dayname.append(dayname.shift)
+    @monday = date_of_monday(week)
 
-    start_time = @next_monday.to_time
-    @slots = create_slots(start_time, dayname)
+    start_time = @monday.to_time
+    @slots = create_slots(start_time, DAYNAME)
     @week = week
   end
 
-  def create(next_monday, status, week)
-    @next_monday = next_monday
-    @plan = WeeklyPlan.where(start_date: @next_monday, user_id: current_user.id).first_or_create
+  def create(monday, status, week)
+    @monday = monday
+    @plan = WeeklyPlan.where(start_date: @monday, user_id: current_user.id).first_or_create
     status.each do |time|
       @plan.time_slots.build(
         start_time: time
@@ -25,24 +20,16 @@ class PlansController < ApplicationController
     if @plan.save
       redirect_to new_todo_path(week: week)
     else
-      dayname = Date::ABBR_DAYNAMES.dup
-      dayname.append(dayname.shift)
-      @slots = create_slots(next_monday.to_time, dayname)
+      @slots = create_slots(@monday.to_time, DAYNAME)
       render 'new'
     end
   end
 
   def index(week='next')
-    if week == 'next'
-      next_monday = Date.today.beginning_of_week + 1.week
-    elsif week == 'this'
-      next_monday = Date.today.beginning_of_week
-    end
-    dayname = Date::ABBR_DAYNAMES.dup
-    dayname.append(dayname.shift)
+    next_monday = date_of_monday(week)
 
     start_time = next_monday.to_time
-    @slots = create_slots(start_time, dayname)
+    @slots = create_slots(start_time, DAYNAME)
 
     @plan = WeeklyPlan.find_by(start_date: next_monday, user_id: current_user.id)
 

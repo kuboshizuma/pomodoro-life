@@ -1,4 +1,4 @@
-= "#{@next_monday.strftime("%m/%d")} ~ #{(@next_monday + 6.days).strftime("%m/%d")}"
+= "#{@monday.strftime("%m/%d")} ~ #{(@monday + 6.days).strftime("%m/%d")}"
 = "週間学習時間#{@slots_count*0.5}時間"
 = form_tag '/todos' do
   = hidden_field_tag 'plan_id', @plan.id

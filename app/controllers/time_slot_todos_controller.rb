@@ -1,20 +1,15 @@
 class TimeSlotTodosController < ApplicationController
+  include Common
+
   def new(week='next')
     @week = week
-    if week == 'next'
-      @next_monday = Date.today.beginning_of_week + 1.week
-    else week == 'this'
-      @next_monday = Date.today.beginning_of_week
-    end
+    @monday = date_of_monday(week)
   end
 
   def create(week='next')
-    if week == 'next'
-      @next_monday = Date.today.beginning_of_week + 1.week
-    else week == 'this'
-      @next_monday = Date.today.beginning_of_week
-    end
-    plan = WeeklyPlan.find_by(user_id: current_user.id, start_date: @next_monday)
+    @monday = date_of_monday(week)
+
+    plan = WeeklyPlan.find_by(user_id: current_user.id, start_date: @monday)
 
     todos = plan.todos
     time_slots = plan.time_slots

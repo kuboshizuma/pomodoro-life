@@ -1,11 +1,10 @@
 class TodosController < ApplicationController
+  include Common
+
   def new(week='next')
-    if week == 'next'
-      @next_monday = Date.today.beginning_of_week + 1.week
-    else week == 'this'
-      @next_monday = Date.today.beginning_of_week
-    end
-    @plan = WeeklyPlan.find_by(user_id: current_user.id, start_date: @next_monday)
+    @monday = date_of_monday(week)
+
+    @plan = WeeklyPlan.find_by(user_id: current_user.id, start_date: @monday)
     slots = @plan.time_slots
     @slots_count = slots.count
     @select_options = []
@@ -15,7 +14,7 @@ class TodosController < ApplicationController
     @week = week
   end
 
-  def create(todo, plan_id, max_time, week)
+  def create(todo, plan_id, max_time, week='next')
     hours = 0
     decided_todos = Todo.where(weekly_plan_id: plan_id)
     decided_time = decided_todos.inject(0){|sum, decided_todo| sum + decided_todo.hours}
