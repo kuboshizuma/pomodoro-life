@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   root 'top#index'
   resources :plans
   resources :todos
+  resources :time_slot_todos
 end

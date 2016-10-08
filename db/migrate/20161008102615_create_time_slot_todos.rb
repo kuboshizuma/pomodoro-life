@@ -3,6 +3,7 @@ class CreateTimeSlotTodos < ActiveRecord::Migration[5.0]
     create_table :time_slot_todos do |t|
       t.references :time_slot
       t.references :todo
+      t.references :weekly_plan
 
       t.timestamps
     end
