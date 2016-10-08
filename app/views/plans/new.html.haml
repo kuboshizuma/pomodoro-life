@@ -1,0 +1,13 @@
+%div{ style: 'width: 90%; margin: 0 auto;'}
+  %p= '新規プラン作成'
+  .clearfix
+    = form_tag '/plans', method: 'post' do
+      = hidden_field_tag :next_monday, @next_monday
+      - @slots.each do |day|
+        %div{ style: 'width: 14%;float: left;' }
+          %p= day[0]
+          - day[1].each do |slot|
+            %p
+              = slot.strftime("%H:%M~")
+              = check_box_tag "status[]", slot
+      = submit_tag '作成する', class: 'btn btn-primary'
