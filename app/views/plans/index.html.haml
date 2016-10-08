@@ -1,0 +1,13 @@
+%div{ style: 'width: 90%; margin: 0 auto;'}
+  %h2= '今週のプラン'
+  .clearfix
+    - @slots.each do |day|
+      %div{ style: 'width: 14%;float: left;' }
+        %p= day[0]
+        - day[1].each do |slot|
+          - if @start_times.include?(slot)
+            %p
+              = @slot_todos[slot]['name']
+          - else
+            %p
+              = slot.strftime("%H:%M~")
