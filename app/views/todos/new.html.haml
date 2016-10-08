@@ -1,7 +1,9 @@
+= "#{@next_monday.strftime("%m/%d")} ~ #{(@next_monday + 6.days).strftime("%m/%d")}"
 = "週間学習時間#{@slots_count*0.5}時間"
 = form_tag '/todos' do
   = hidden_field_tag 'plan_id', @plan.id
   = hidden_field_tag 'max_time', @slots_count*0.5
+  = hidden_field_tag 'week', @week
   - 10.times do |i|
     %p= "priority #{i+1}"
     = text_field_tag "todo[][name]"

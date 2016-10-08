@@ -1,1 +1,2 @@
-= link_to '割り当て', time_slot_todos_path, method: :post
+= "#{@next_monday.strftime("%m/%d")} ~ #{(@next_monday + 6.days).strftime("%m/%d")}"
+= link_to '割り当て', time_slot_todos_path(week: @week), method: :post

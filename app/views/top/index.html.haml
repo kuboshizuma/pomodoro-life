@@ -9,13 +9,14 @@
 .timerdisplay
   .timer.clearfix{"data-minutes-left" => "25"}
 .buttondisplay
-  = image_tag("start.png", options = {:id=>"start", :style => "width:70px"})
-  = image_tag("stop.png", options = {:id=>"stop", :style => "width:70px;"})
+  = image_tag("start.png", options = { id: "start", style: "width:70px"})
+  = image_tag("stop.png", options = { id: "stop", style: "width:70px;display:none;"})
 
 :javascript
   $('#start').on('click', function(){
     $('.timer').startTimer();
-    document.getElementById("start").style.display="none";
+    $("#start").css('display', 'none');
+    $("#stop").css('display', 'block');
   });
   $('#stop').on('click', function(){
     //ここからPOPUP "Are you sure?" if YES, LINK to

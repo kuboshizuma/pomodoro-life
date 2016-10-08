@@ -24,13 +24,21 @@
               %i.fa.fa-home
               %span HOME
           %li
+            = link_to new_plan_path(week: 'this') do
+              %i.fa.fa-calendar-plus-o
+              %span 今週のプランを立てる
+          %li
+            = link_to plans_path(week: 'this') do
+              %i.fa.fa-calendar
+              %span 今週のプラン
+          %li
             = link_to new_plan_path do
               %i.fa.fa-calendar-plus-o
-              %span プランを立てる
+              %span 来週のプランを立てる
           %li
             = link_to plans_path do
               %i.fa.fa-calendar
-              %span 今週のプラン
+              %span 来週のプラン
           %li
             = link_to destroy_user_session_path, method: :delete do
               %i.fa.fa-sign-out
