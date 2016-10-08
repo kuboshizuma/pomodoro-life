@@ -1,3 +1,17 @@
+- content_for :head do
+  = javascript_include_tag 'jquery.simple.timer.js'
+
+
+.taskdisplay
+  社会学レポート
+
+.timerdisplay
+  .timer.clearfix{"data-minutes-left" => "25"}
+.buttondisplay
+  = image_tag("start.png", options = {:id=>"start", :style => "width:70px"})
+  = image_tag("stop.png", options = {:id=>"stop", :style => "width:70px;"})
+
+//logged in or not
 - if user_signed_in?
   %p= link_to 'ログアウト', destroy_user_session_path, method: :delete
   %p= @user.name
@@ -5,3 +19,11 @@
 - else
   = link_to 'facebookログイン', user_facebook_omniauth_authorize_path
 
+:javascript
+  $('#start').on('click', function(){
+    $('.timer').startTimer();
+    document.getElementById("start").style.display="none";
+  });
+  $('#stop').on('click', function(){
+    //ここからPOPUP "Are you sure?" if YES, LINK to
+  });
