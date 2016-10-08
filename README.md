@@ -48,7 +48,7 @@ FACEBOOK_APP_SECRET_DEV=abcdefghijklmnopqrstuvwxyz
 ## ドメインの設定
 
 `/etc/hosts`に以下のように記述する。
-(`localhost`の代わりに`dev.eveco.com`が使えるようになる)
+(`localhost`の代わりに`dev.pomodoro-life.com`が使えるようになる)
 
 ```
 127.0.0.1 dev.pomodoro-life.com
