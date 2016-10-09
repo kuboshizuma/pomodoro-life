@@ -2,18 +2,25 @@
   = stylesheet_link_tag 'plan'
 
 %div{ style: 'margin: 0 auto;'}
-  %p.plantitle= "#{week_name(@week)}のプラン"
-  .clearfix
-
+  .colorkeys
+    %p.plantitle= "#{week_name(@week)}のプラン"
     .container
-      .row
+      .row{ style: 'padding: 0;'}
+        - @todo_ids.each do |id|
+          .col-xs-6{ style: 'font-size: 11px'}
+            .colorcircle{ style: "float: left; width: 15px; height: 15px; border-radius: 20px; margin-top: 2px; background-color: #{@todo_colors[id]};"}
+            %p.todoname= @todos[id-1]['name']
+
+  .clearfix
+    .container
+      .row.table
         .col-xs-1.slotlist
           .clearfix
             - @slots[0][1].each do |slot|
               %p.times= slot.strftime("%H:%M~")
 
         .col-xs-10.slottable
-          .clearfix{ style: 'position: fixed; top: 5%; right: 2%; width: 80%; margin-top: 48px;'}
+          .clearfix.days#wrap
             - @slots.each do |day|
               %p.days= day[0]
           .clearfix
@@ -24,7 +31,12 @@
                 %div{ style: 'width: 14%; float: left;' }
                   - day[1].each do |slot|
                     - if @start_times.include?(slot)
-                      %p.slot.filledBackground
-                        / = @slot_todos[slot]['name']
+                      %p.slot{ style: "color: white; background-color: #{@todo_colors[@slot_todos[slot]['id']]};"}
                     - else
                       %p.slot.originalBackground
+
+:javascript
+  var wrap = $(".clearfix.days#wrap");
+  window.onscroll = function(e) {
+      wrap.addClass("fix");
+  };

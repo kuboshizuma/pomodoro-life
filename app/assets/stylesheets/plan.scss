@@ -4,15 +4,19 @@
 }
 p.plantitle{
   font-size: 14px;
-  padding: 8px 0 1px 10px;
 }
-
+p.todoname{
+  padding: 0 0 0 20px;
+}
+.colorkeys{
+  padding: 8px 0 0 10px;
+}
 .newtodotitle{
   color: #D55C4B;
   padding: 8px 0 12px 10px;
 }
-.row{
-  padding-top: 17px;
+
+.row.table{
   color: #D55C4B;
 }
 
@@ -32,6 +36,12 @@ p.times{
   margin-left: 10px;
 }
 
+.fix{
+  position: fixed;
+  top: 45px;
+  width: 320px;
+}
+
 p.days{
   float: left;
   width: 13.7%;
@@ -39,6 +49,7 @@ p.days{
   background-color: white;
   border-width: 1px;
   padding: 3px;
+  text-align: center;
 }
 
 p.slot{
