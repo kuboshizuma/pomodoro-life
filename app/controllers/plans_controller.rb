@@ -26,12 +26,16 @@ class PlansController < ApplicationController
   end
 
   def index(week='next')
-    next_monday = date_of_monday(week)
+    @week = week
+    next_monday = date_of_monday(@week)
 
     start_time = next_monday.to_time
     @slots = create_slots(start_time, DAYNAME)
 
     @plan = WeeklyPlan.find_by(start_date: next_monday, user_id: current_user.id)
+    if @plan.blank?
+      redirect_to new_plan_path(week: week)
+    end
 
     @start_times = []
     @slot_todos = {}
