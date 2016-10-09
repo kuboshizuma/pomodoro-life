@@ -48,6 +48,7 @@
   display: block;
 }
 
+// conditions of todos
 .not_yet {
   td {
     &:hover {
@@ -64,19 +65,23 @@
 }
 
 .end_todo {
+  background-color: #efefef;
+  color: #999;
   td {
     &:hover {
       cursor: pointer;
     }
   }
-  background-color: #efefef;
-  color: #999;
   a {
     color: #999;
     &:hover{
       text-decoration:none;
     }
   }
+}
+
+.table-responsive{
+  border: none;
 }
 
 td.selected {
