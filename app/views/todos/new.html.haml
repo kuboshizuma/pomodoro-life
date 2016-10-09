@@ -1,11 +1,29 @@
-= "#{@monday.strftime("%m/%d")} ~ #{(@monday + 6.days).strftime("%m/%d")}"
-= "週間学習時間#{@slots_count*0.5}時間"
-= form_tag '/todos' do
-  = hidden_field_tag 'plan_id', @plan.id
-  = hidden_field_tag 'max_time', @slots_count*0.5
-  = hidden_field_tag 'week', @week
-  - 10.times do |i|
-    %p= "priority #{i+1}"
-    = text_field_tag "todo[][name]"
-    = select_tag 'todo[][hours]', options_for_select(@select_options)
-  = submit_tag '登録', class: 'btn btn-primary'
+- content_for :head do
+  = stylesheet_link_tag 'todo'
+
+%div{ style: 'margin: 0 auto; padding: 0 10px 0 10px;'}
+  .newtodotitle
+    = "#{@monday.strftime("%m/%d")} (Mon) ~ #{(@monday + 6.days).strftime("%m/%d")} (Sun)"
+    = "　　合計: #{@slots_count*0.5}時間"
+
+    %br
+
+    ="TODOを決める"
+    %br
+
+  = form_tag '/todos' do
+
+    .todo
+      = hidden_field_tag 'plan_id', @plan.id
+      = hidden_field_tag 'max_time', @slots_count*0.5
+      = hidden_field_tag 'week', @week
+      .container
+        - 10.times do |i|
+          .row.todopanel
+            .col-xs-1
+              %p= "#{i+1}"
+            .col-xs-8
+              = text_field_tag "todo[][name]"
+            .col-xs-3
+              = select_tag 'todo[][hours]', options_for_select(@select_options)
+      = submit_tag '▷', class: 'btn btn-primary'
