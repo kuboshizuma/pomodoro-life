@@ -98,3 +98,21 @@ td.selected {
         color: #79D1B0;
     }
 }
+
+// for MODAL
+.modal-dialog{
+  margin: 48% 10% 10% 10%;
+  color: white;
+}
+
+.modal-content{
+  background: linear-gradient(-45deg, rgba(246, 255, 0, .8), rgba(255, 0, 161, .8));
+}
+.modal-header, .modal-body{
+  border: none;
+  text-align: center;
+}
+
+.modal-body a:hover, .modal-body a, a:focus{
+  color: white;
+}
