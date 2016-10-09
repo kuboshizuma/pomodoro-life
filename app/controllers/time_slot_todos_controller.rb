@@ -2,11 +2,6 @@ class TimeSlotTodosController < ApplicationController
   include Common
 
   def new(week='next')
-    @week = week
-    @monday = date_of_monday(week)
-  end
-
-  def create(week='next')
     @monday = date_of_monday(week)
 
     plan = WeeklyPlan.find_by(user_id: current_user.id, start_date: @monday)
