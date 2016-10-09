@@ -28,6 +28,7 @@ p.times{
 
 .slotlist{
   padding: 0;
+  padding-bottom: 80px;
 }
 
 .slottable{
@@ -68,12 +69,14 @@ input#status_{
 
 input.btn.btn-primary{
   opacity: 1;
-  border-radius: 200px;
+  border-radius: 25px;
   position: fixed;
   bottom: 20px;
   right: 20px;
   background-color: #D55C4B;
   border: none;
+  width: 50px;
+  height: 50px;
 }
 
 p.originalBackground{
