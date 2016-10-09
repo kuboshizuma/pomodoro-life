@@ -28,4 +28,14 @@ class TimeSlotTodosController < ApplicationController
     end
     redirect_to root_path
   end
+
+  def show(id)
+    @time_slot_todo = TimeSlotTodo.find(id)
+  end
+
+  def update(id)
+    @time_slot_todo = TimeSlotTodo.find(id)
+    @time_slot_todo.update(status: true)
+    redirect_to root_path
+  end
 end

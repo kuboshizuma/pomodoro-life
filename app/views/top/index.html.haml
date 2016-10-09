@@ -2,18 +2,38 @@
   = stylesheet_link_tag 'timer'
   = javascript_include_tag 'jquery.simple.timer.js'
 
-
-.taskdisplay
-  社会学レポート
-
-.timerdisplay
-  .timer.clearfix
-    .hours 00:
-    .minutes 25:
-    .seconds 00
-    .clearDiv
-= image_tag("start.png", class: 'timer-button', id: "start")
-= image_tag("restart.png", class: 'timer-button', id: "stop", style: "display:none;")
+- if user_signed_in?
+  .table-responsive
+    %table.table{ data: { toggle: "table", height: "299" }, style: 'max-width: 800px;margin: 0 auto' }
+      %thead
+        %tr
+          %th
+          %th 時間
+          %th タイトル
+        - @time_slots.each.with_index do |slot, i|
+          - todo = slot.todos
+          - slot_id = slot.time_slot_todos[0].id
+          - class_name = 'not_yet'
+          - is_clear = false
+          - if slot.start_time < Time.now - 30.minutes
+            - class_name = 'end_todo'
+          - if slot.time_slot_todos[0].status
+            - class_name = 'end_todo'
+            - is_clear = true
+          = link_to time_slot_todo_path(slot_id) do
+            %tr{ class: "#{class_name}" }
+              %td{ class: "#{(is_clear)?'selected':''}" }
+              %td= "#{slot.start_time.strftime("%H:%M")} ~ #{(slot.start_time + 30.minutes).strftime("%H:%M")}"
+              %td= link_to todo[0].name, time_slot_todo_path(slot_id)
+- else
+  .timerdisplay
+    .timer.clearfix
+      .hours 00:
+      .minutes 25:
+      .seconds 00
+      .clearDiv
+  = image_tag("start.png", class: 'timer-button', id: "start")
+  = image_tag("stop.png", class: 'timer-button', id: "stop", style: "display:none;")
 
 :javascript
   $('#start').on('click', function(){
@@ -30,4 +50,8 @@
     $('.timerdisplay').append('<div class="timer"><div class="hours">00:</div><div class="minutes">25:</div><div class="seconds">00</div><div class="clearDiv"></div></div>')
     $("#start").css('display', 'block');
     $("#stop").css('display', 'none');
+  });
+  $("td").click(function(){
+    var url = $(this).parent("tr").find("td a:first-child").attr("href");
+    window.location = url;
   });

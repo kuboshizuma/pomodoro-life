@@ -1,0 +1,47 @@
+- content_for :head do
+  = stylesheet_link_tag 'timer'
+  = javascript_include_tag 'jquery.simple.timer.js'
+
+.taskdisplay
+  = @time_slot_todo.todo.name
+
+.timerdisplay
+  .timer.clearfix
+    .hours 00:
+    .minutes 00:
+    .seconds 10
+    .clearDiv
+= image_tag("start.png", class: 'timer-button', id: "start")
+= image_tag("stop.png", class: 'timer-button', id: "stop", style: "display:none;")
+
+#responsive.modal.fade{ tabindex: "-1", data: { width: "760" }, style: 'display:none;' }
+  .modal-dialog{ role: 'document' }
+    .modal-content
+      .modal-header
+        %button.close{ type: "button", data: { dismiss: "modal" }, aria: { hidden: "true" } }
+          = "x"
+        %h3 Congratulation!
+      .modal-body
+        = link_to "完了！次へ！", time_slot_todo_path(@time_slot_todo.id), method: :PATCH
+
+:javascript
+  $('#start').on('click', function(){
+    $('.timerdisplay').empty()
+    $('.timerdisplay').append('<div class="timer clearfix" data-seconds-left="10"></div>')
+    $('.timer').startTimer({
+      allowPause: true,
+      onComplete: function() {
+        $('.timerdisplay').empty()
+        $('.timerdisplay').append('<div class="timer"><div class="hours">00:</div><div class="minutes">00:</div><div class="seconds">00</div><div class="clearDiv"></div></div>')
+        $('#responsive').modal('show');
+      }
+    });
+    $("#start").css('display', 'none');
+    $("#stop").css('display', 'block');
+  });
+  $('#stop').on('click', function(){
+    $('.timerdisplay').empty()
+    $('.timerdisplay').append('<div class="timer"><div class="hours">00:</div><div class="minutes">00:</div><div class="seconds">10</div><div class="clearDiv"></div></div>')
+    $("#start").css('display', 'block');
+    $("#stop").css('display', 'none');
+  });

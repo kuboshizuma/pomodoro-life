@@ -52,6 +52,9 @@ class PlansController < ApplicationController
     @todo_colors = ['#D04E5A', '#E2714D', '#F3C24E', '#8BB14F', '#61BFB0', '#5DB4DD', '#7E8AE4', '#B087E7', '#D37CB4', '#D74E46']
   end
 
+  def show(id)
+  end
+
   private
 
   def create_slots(start_time, dayname)

@@ -10,14 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161008102615) do
+ActiveRecord::Schema.define(version: 20161009023838) do
 
   create_table "time_slot_todos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "time_slot_id"
     t.integer  "todo_id"
     t.integer  "weekly_plan_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.boolean  "status",         default: false
     t.index ["time_slot_id"], name: "index_time_slot_todos_on_time_slot_id", using: :btree
     t.index ["todo_id"], name: "index_time_slot_todos_on_todo_id", using: :btree
     t.index ["weekly_plan_id"], name: "index_time_slot_todos_on_weekly_plan_id", using: :btree
