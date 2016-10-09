@@ -17,7 +17,6 @@ p.todoname{
 }
 
 .row.table{
-  padding-top: 41px;
   color: #D55C4B;
 }
 
@@ -37,6 +36,12 @@ p.times{
   margin-left: 10px;
 }
 
+.fix{
+  position: fixed;
+  top: 45px;
+  width: 320px;
+}
+
 p.days{
   float: left;
   width: 13.7%;
@@ -44,6 +49,7 @@ p.days{
   background-color: white;
   border-width: 1px;
   padding: 3px;
+  text-align: center;
 }
 
 p.slot{
