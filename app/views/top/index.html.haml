@@ -4,14 +4,16 @@
 
 - if user_signed_in?
   .container
-    %h3{ style: "color:#666" } 今日のスケジュール
+    %p{ style: "font-size: 18px; color:#D55C4B" } 今日のスケジュール
+
+
   .table-responsive
     %table.table{ data: { toggle: "table", height: "299" }, style: 'max-width: 800px;margin: 0 auto' }
       %thead
         %tr{ style: "font-size:12px;color:#666" }
-          %th{ style: "padding:5px" }
-          %th{ style: "padding:5px" } 時間
-          %th{ style: "padding:5px" } タイトル
+          %th{ style: "padding:11px" }
+          %th{ style: "padding:5px; width: 115px; color:#D55C4B" } 時間
+          %th{ style: "padding:5px; color:#D55C4B" } タイトル
         - @time_slots.each.with_index do |slot, i|
           - todo = slot.todos
           - slot_id = slot.time_slot_todos[0].id
@@ -27,6 +29,7 @@
               %td{ class: "#{(is_clear)?'selected':''}" }
               %td= "#{slot.start_time.strftime("%H:%M")} ~ #{(slot.start_time + 30.minutes).strftime("%H:%M")}"
               %td= link_to todo[0].name, time_slot_todo_path(slot_id)
+
 - else
   .timerdisplay{ style: "margin-top: 50px;" }
     .timer.clearfix
