@@ -4,15 +4,20 @@
 }
 p.plantitle{
   font-size: 14px;
-  padding: 8px 0 1px 10px;
 }
-
+p.todoname{
+  padding: 0 0 0 20px;
+}
+.colorkeys{
+  padding: 8px 0 0 10px;
+}
 .newtodotitle{
   color: #D55C4B;
   padding: 8px 0 12px 10px;
 }
-.row{
-  padding-top: 17px;
+
+.row.table{
+  padding-top: 41px;
   color: #D55C4B;
 }
 
