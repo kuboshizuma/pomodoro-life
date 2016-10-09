@@ -1,5 +1,5 @@
 %div{ style: 'width: 90%; margin: 0 auto;'}
-  %h2= '今週のプラン'
+  %h2= "#{week_name(@week)}のプラン"
   .clearfix
     - @slots.each do |day|
       %div{ style: 'width: 14%;float: left;' }
