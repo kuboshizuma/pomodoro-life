@@ -39,16 +39,17 @@ class PlansController < ApplicationController
 
     @start_times = []
     @slot_todos = {}
+    @todo_ids = []
     time_slots = TimeSlot.where(weekly_plan: @plan.id).includes(:todos)
     time_slots.each do |time_slot|
       if !time_slot.todos[0].nil?
         @start_times.append(time_slot.start_time)
         @slot_todos[time_slot.start_time] = time_slot.todos[0]
+        @todo_ids << time_slot.todos[0].id
       end
     end
-    @todos = Todo.all
-    @todo_ids = Todo.pluck(:id)
-    # @todo_ids = time_slots.pluck(:id)
+    @todo_ids = @todo_ids.uniq
+    @todos = Todo.where(id: @todo_ids)
     @todo_colors = ['#D04E5A', '#E2714D', '#F3C24E', '#8BB14F', '#61BFB0', '#5DB4DD', '#7E8AE4', '#B087E7', '#D37CB4', '#D74E46']
   end
 

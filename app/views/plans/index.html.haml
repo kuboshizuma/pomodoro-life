@@ -6,10 +6,10 @@
     %p.plantitle= "#{week_name(@week)}のプラン"
     .container
       .row{ style: 'padding: 0;'}
-        - @todo_ids.each do |id|
+        - @todos.each do |todo|
           .col-xs-6{ style: 'font-size: 11px'}
-            .colorcircle{ style: "float: left; width: 15px; height: 15px; border-radius: 20px; margin-top: 2px; background-color: #{@todo_colors[id]};"}
-            %p.todoname= @todos[id-1]['name']
+            .colorcircle{ style: "float: left; width: 15px; height: 15px; border-radius: 20px; margin-top: 2px; background-color: #{@todo_colors[todo.id]};"}
+            %p.todoname= todo.name
 
   .clearfix
     .container
