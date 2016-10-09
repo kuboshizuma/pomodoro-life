@@ -1,16 +1,30 @@
 - content_for :head do
-  = stylesheet_link_tag 'todo'
+  = stylesheet_link_tag 'plan'
 
-%div{ style: 'width: 90%; margin: 0 auto;'}
-  %h2= "#{week_name(@week)}のプラン"
+%div{ style: 'margin: 0 auto;'}
+  %p.plantitle= "#{week_name(@week)}のプラン"
   .clearfix
-    - @slots.each do |day|
-      %div{ style: 'width: 14%;float: left;' }
-        %p= day[0]
-        - day[1].each do |slot|
-          - if @start_times.include?(slot)
-            %p
-              = @slot_todos[slot]['name']
-          - else
-            %p
-              = slot.strftime("%H:%M~")
+
+    .container
+      .row
+        .col-xs-1.slotlist
+          .clearfix
+            - @slots[0][1].each do |slot|
+              %p.times= slot.strftime("%H:%M~")
+
+        .col-xs-10.slottable
+          .clearfix{ style: 'position: fixed; top: 5%; right: 2%; width: 80%; margin-top: 48px;'}
+            - @slots.each do |day|
+              %p.days= day[0]
+          .clearfix
+            = form_tag '/plans', method: 'post' do
+              = hidden_field_tag :monday, @monday
+              = hidden_field_tag :week, @week
+              - @slots.each do |day|
+                %div{ style: 'width: 14%; float: left;' }
+                  - day[1].each do |slot|
+                    - if @start_times.include?(slot)
+                      %p.slot.filledBackground
+                        / = @slot_todos[slot]['name']
+                    - else
+                      %p.slot.originalBackground

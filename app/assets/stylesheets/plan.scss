@@ -1,3 +1,16 @@
+#page_wrap{
+  color: #D55C4B;
+  padding-top: 46px;
+}
+p.plantitle{
+  font-size: 14px;
+  padding: 8px 0 1px 10px;
+}
+
+.newtodotitle{
+  color: #D55C4B;
+  padding: 8px 0 12px 10px;
+}
 .row{
   padding-top: 17px;
   color: #D55C4B;
@@ -60,6 +73,16 @@ p.selectedBackground{
   background-color: #1abc9c;
 }
 
+p.filledBackground{
+  background-color: rgba(242, 105, 100, 0.1);
+}
+
 .disabled_slot_box {
   background-color: #ddd;
 }
+
+p.slot.selectedBackground{
+  font-size: 8px;
+}
+
+
