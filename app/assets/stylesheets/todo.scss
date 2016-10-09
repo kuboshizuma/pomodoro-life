@@ -1,0 +1,66 @@
+.newtodotitle{
+  color: #D55C4B;
+  padding-bottom: 5px;
+}
+
+input#todo__name{
+  background: transparent;
+  border: none;
+}
+.todobg{
+  height: 400px;
+}
+
+.todobg .panel{
+  border-radius: 0;
+  margin: 0;
+  height: 40px;
+  background-color: white;
+  border-bottom: solid #D55C4B;
+  border-width: 1px;
+}
+
+.todo{
+  float: left;
+  color: #D55C4B;
+  background: transparent;
+}
+
+.todopanel{
+  height: 40px;
+  padding: 10px;
+}
+
+.todobg, .todo{
+  width: 100%;
+  position: absolute;
+  top: 110px;
+  left: 0;
+}
+
+input#todo__name{
+  border-bottom: solid #eab8b7;
+  border-width: 1px;
+  width: 100%;
+}
+
+input.btn.btn-primary{
+  opacity: 1;
+  border-radius: 200px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #D55C4B;
+  border: none;
+}
+
+select#todo__hours{
+  padding-left: 8px;
+  background-color: white;
+  border: solid  #D55C4B;
+  border-width: 1px;
+}
+
+.col-xs-8{
+  width: 63%;
+}
