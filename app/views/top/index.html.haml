@@ -7,17 +7,27 @@
   社会学レポート
 
 .timerdisplay
-  .timer.clearfix{"data-minutes-left" => "25"}
-.buttondisplay
-  = image_tag("start.png", options = { id: "start", style: "width:70px"})
-  = image_tag("stop.png", options = { id: "stop", style: "width:70px;display:none;"})
+  .timer.clearfix
+    .hours 00:
+    .minutes 25:
+    .seconds 00
+    .clearDiv
+= image_tag("start.png", class: 'timer-button', id: "start")
+= image_tag("stop.png", class: 'timer-button', id: "stop", style: "display:none;")
 
 :javascript
   $('#start').on('click', function(){
-    $('.timer').startTimer();
+    $('.timerdisplay').empty()
+    $('.timerdisplay').append('<div class="timer clearfix" data-minutes-left="25"></div>')
+    $('.timer').startTimer({
+      allowPause: true
+    });
     $("#start").css('display', 'none');
     $("#stop").css('display', 'block');
   });
   $('#stop').on('click', function(){
-    //ここからPOPUP "Are you sure?" if YES, LINK to
+    $('.timerdisplay').empty()
+    $('.timerdisplay').append('<div class="timer"><div class="hours">00:</div><div class="minutes">25:</div><div class="seconds">00</div><div class="clearDiv"></div></div>')
+    $("#start").css('display', 'block');
+    $("#stop").css('display', 'none');
   });

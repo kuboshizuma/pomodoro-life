@@ -2,10 +2,13 @@
   text-align: center;
   color:#D55C4B;
   font-size: 27px;
+  padding: 30px 0;
 }
 
 .timerdisplay{
-  padding: 100px 20% 0 20%;
+  padding-top: 92px;
+  margin: 0 auto;
+  width: 250px;
   height: 250px;
   background-image: image-url("circle.png");
   background-size: contain;
@@ -13,6 +16,8 @@
   background-position: center;
 }
 .timer{
+  margin: 0 auto;
+  width: 180px;
 }
 .timer .hours{
   color: #D55C4B;
@@ -37,6 +42,8 @@
   padding-top: 22px;
 }
 
-.buttondisplay{
-  padding: 30px 40% 0 40%;
+.timer-button {
+  margin: 40px auto 0;
+  width: 70px;
+  display: block;
 }
