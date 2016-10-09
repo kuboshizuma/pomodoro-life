@@ -20,7 +20,7 @@
               %p.times= slot.strftime("%H:%M~")
 
         .col-xs-10.slottable
-          .clearfix.days#wrap
+          .clearfix.days{ style: 'position: fixed; width: 80%; top: 44px;'}
             - @slots.each do |day|
               %p.days= day[0]
           .clearfix
@@ -34,9 +34,3 @@
                       %p.slot{ style: "color: white; background-color: #{@todo_colors[@slot_todos[slot]['id']]};"}
                     - else
                       %p.slot.originalBackground
-
-:javascript
-  var wrap = $(".clearfix.days#wrap");
-  window.onscroll = function(e) {
-      wrap.addClass("fix");
-  };

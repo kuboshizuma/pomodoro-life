@@ -4,7 +4,7 @@
 %div{ style: 'margin: 0 auto;'}
   .newtodotitle
     = "#{@monday.strftime("%m/%d")} (Mon) ~ #{(@monday + 6.days).strftime("%m/%d")} (Sun)"
-    = "で使う時間を選ぶ"
+    = "でTODO項目に使える時間を選ぶ"
 
   .container
     .row
@@ -14,7 +14,7 @@
             %p.times= slot.strftime("%H:%M~")
 
       .col-xs-10.slottable
-        .clearfix{ style: 'position: fixed; top: 5%; right: 2%; width: 80%; margin-top: 48px;'}
+        .clearfix{ style: 'position: fixed; width: 80%; top: 45px;'}
           - @slots.each do |day|
             %p.days= day[0]
         .clearfix
